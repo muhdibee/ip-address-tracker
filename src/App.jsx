@@ -7,13 +7,13 @@ function App() {
       <div className='hero-image-container'>
         <div className='search-container'>
           <p>IP Address Tracker</p>
-          <form>
-            <input type='text'></input>
-            <input type="submit" value="" />
-          </form>
-
+          <div className="search-field">
+            <form>
+              <input type='text' placeholder='Search for any IP address or domain'></input>
+              <input type="submit" value=">"  style={{background: '#000000', color: 'white'}}/>
+            </form>
+          </div>
         </div>
-
       </div>
       <div className='result-container'>
         <div className='result-info'>

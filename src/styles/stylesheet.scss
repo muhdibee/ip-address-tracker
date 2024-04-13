@@ -1,2 +1,67 @@
 .attribution { font-size: 14px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Rubik", sans-serif;
+  }
+  
+
+//App container
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    
+    // hero-image-container
+    .hero-image-container {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        height: 40%;
+        background-image: url(../assets/images/pattern-bg-desktop.png);
+
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // border: 1px solid red;
+            width: 50%;
+
+        }
+        .search-container p{
+            margin-top: 2rem;
+            color: white;
+            font-weight: 400;
+            font-size:xx-large;
+        }
+        .search-container .search-field {
+            margin-top: 1rem;
+        }
+        .search-container .search-field form input{
+            border: 0px;
+            padding: 1rem;
+            font-size:18px;
+        }
+        .search-container .search-field form input[type='text']{
+            border-top-left-radius: .8rem;
+            border-bottom-left-radius: .8rem;
+            width: 30rem;
+        }
+        .search-container .search-field form input[type='submit']{
+            border-top-right-radius: .8rem;
+            border-bottom-right-radius: .8rem;
+
+        }
+
+    }
+}
+
