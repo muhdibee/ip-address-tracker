@@ -47,20 +47,26 @@
         .search-container .search-field {
             margin-top: 1rem;
         }
-        .search-container .search-field form input{
+        .search-container .search-field form .input{
             border: 0px;
             padding: 1rem;
             font-size:18px;
+            &:focus {
+                outline: none;
+            }
         }
-        .search-container .search-field form input[type='text']{
+        .search-container .search-field form .input[type='text']{
             border-top-left-radius: .8rem;
             border-bottom-left-radius: .8rem;
             width: 30rem;
         }
-        .search-container .search-field form input[type='submit']{
+        .search-container .search-field form .input[type='submit']{
             border-top-right-radius: .8rem;
             border-bottom-right-radius: .8rem;
-
+            background: #000000;
+            color: white;
+            font-weight: bold;
+            cursor:pointer;
         }
 
     }

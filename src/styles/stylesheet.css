@@ -46,19 +46,26 @@ body {
 .app-container .hero-image-container .search-container .search-field {
   margin-top: 1rem;
 }
-.app-container .hero-image-container .search-container .search-field form input {
+.app-container .hero-image-container .search-container .search-field form .input {
   border: 0px;
   padding: 1rem;
   font-size: 18px;
 }
-.app-container .hero-image-container .search-container .search-field form input[type=text] {
+.app-container .hero-image-container .search-container .search-field form .input:focus {
+  outline: none;
+}
+.app-container .hero-image-container .search-container .search-field form .input[type=text] {
   border-top-left-radius: 0.8rem;
   border-bottom-left-radius: 0.8rem;
   width: 30rem;
 }
-.app-container .hero-image-container .search-container .search-field form input[type=submit] {
+.app-container .hero-image-container .search-container .search-field form .input[type=submit] {
   border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
+  background: #000000;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .leaflet-container {
