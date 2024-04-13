@@ -39,8 +39,8 @@ body {
 }
 .app-container .hero-image-container .search-container p {
   margin-top: 2rem;
-  color: white;
-  font-weight: 400;
+  color: #ffffff;
+  font-weight: 500;
   font-size: xx-large;
 }
 .app-container .hero-image-container .search-container .search-field {
@@ -63,9 +63,44 @@ body {
   border-top-right-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
   background: #000000;
-  color: white;
+  color: #ffffff;
   font-weight: bold;
   cursor: pointer;
+}
+.app-container .hero-image-container .text-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  position: relative;
+  width: 65rem;
+  height: 10rem;
+  background-color: #ffffff;
+  z-index: 900;
+  bottom: -2.8rem;
+  border-radius: 0.8rem;
+}
+.app-container .hero-image-container .text-result * {
+  margin: 0px;
+  padding: 0px;
+}
+.app-container .hero-image-container .text-result div {
+  border-left: 1px solid hsl(0, 0%, 59%);
+  font-weight: 500;
+  padding-left: 1rem;
+}
+.app-container .hero-image-container .text-result div[class=first] {
+  border-left: none;
+}
+.app-container .hero-image-container .text-result .header {
+  display: block;
+  color: hsl(0, 0%, 59%);
+  font-size: medium;
+  margin-bottom: 1rem;
+}
+.app-container .hero-image-container .text-result .data {
+  color: hsl(0, 0%, 17%);
+  font-size: x-large;
 }
 
 .leaflet-container {

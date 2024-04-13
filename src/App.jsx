@@ -17,6 +17,24 @@ function App() {
               <span type="submit"  className='input'><svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg></span>
             </form>
           </div>
+          <div className='text-result'>
+            <div className='first'>
+              <span  className='header'>IP ADDRESS</span >
+              <span  className='data' >192.212.24.101</span >
+            </div>
+            <div>
+              <span  className='header'>LOCATION</span >
+              <span  className='data'>Brooklyn, NY 10001 </span >
+            </div>
+            <div>
+              <span  className='header'>TIMEZONE</span >
+              <span  className='data'>UTC-05:00</span >
+            </div>
+            <div>
+              <span  className='header'>ISP</span >
+              <span className='data'>SpaceX StarLink</span >
+            </div>
+          </div>
         </div>
       </div>
       <MapContainer
@@ -30,7 +48,7 @@ function App() {
       </MapContainer>
       
       <div className="attribution">
-        Coded by <a href="#">Muhammad Ibrahim</a>. {/*Add my portfolio URL */}
+        Coded by <a href="https://github.com/muhdibee" target="_blank">Muhammad Ibrahim</a>. {/*Add my portfolio URL */}
       </div>
     </div>
   )
