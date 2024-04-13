@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import 'leaflet/dist/leaflet.css'
 import {MapContainer,TileLayer, Marker, Popup} from 'react-leaflet'
-import L from 'leaflet'
-import MarkerClusterGroup from "react-leaflet-cluster";
+import L, {Icon} from 'leaflet'
+import iconLocation from './assets/images/iconLocation.svg'
 
 function App() {
-  // var map = L.map('map').setView([51.505, -0.09], 13);
+  const customIcon = new Icon({
+    iconUrl: iconLocation,
+    iconSize: [30,38]
+  })
   return (
     <div className='app-container'>
       <div className='hero-image-container'>
@@ -44,7 +47,7 @@ function App() {
           attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* TODO: Add markers */}
+        <Marker position={[9.0563, 7.4985]} icon={customIcon}></Marker>
       </MapContainer>
       
       <div className="attribution">
