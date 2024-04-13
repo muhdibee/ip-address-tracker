@@ -25,7 +25,7 @@
         display: flex;
         align-items: start;
         justify-content: center;
-        height: 40%;
+        height: 38vh;
         background-image: url(../assets/images/pattern-bg-desktop.png);
 
         .search-container {
@@ -34,7 +34,8 @@
             align-items: center;
             justify-content: center;
             // border: 1px solid red;
-            width: 50%;
+            max-width: 100%;
+            min-width: 50%;
 
         }
         .search-container p{
@@ -63,5 +64,11 @@
         }
 
     }
+}
+.leaflet-container {
+    height:58vh;
+    width: 100vw;
+    margin:0px;
+    padding: 0px
 }
 
