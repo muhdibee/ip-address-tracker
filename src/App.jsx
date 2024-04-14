@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState('');
   const [errorText, setErrorText] = useState('');
+  const [successText, setSuccessText] = useState("")
   const [response, setResponse] = useState(undefined);
 
   const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
@@ -24,11 +25,19 @@ function App() {
 
   const getUserData = async(url) => {
     try {
-      const response = await axios.get( url);
+      const response = await axios.get(url);
+      setSuccessText("Success.");
+      setTimeout(()=>{
+        setSuccessText("");
+      },3000);
+  
       setResponse(response.data)
     }catch(err){
       if(err.response){
-        setErrorText("Bad request")
+        setErrorText("Bad request");
+        setTimeout(()=>{
+          setErrorText("");
+        },3000);    
       }
     }
   }
@@ -47,33 +56,36 @@ function App() {
 
     // Regular expression for validating a domain name
     const domainRegex = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$/;
-    // Check if the input matches the IP address regular expression
+
+    // Check if the text matches the IP address regular expression
     if (ipRegex.test(text)) {
         return 'IP';
     }
+
     // Check if the text matches the domain name regular expression
-    if (domainRegex.test(text)) {
+    if (domainRegex.test(input)) {
         return 'Domain';
     }
+
     // If neither regular expression matches, return null
     return null;
 }
 
-
-  const handleSubmit = (e)=> {
-  e.preventDefault()
-  const requestType = isIpOrDomain(input);
-  {console.log(input)}
-  if(requestType === 'IP'){
-    getUserData(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${input}`)
-  }else if(requestType === 'Domain'){
-    setErrorText("Please search using an IP address.")
+  
+  const handleSubmit = async(e)=> {
+  e.preventDefault();
+  if(isIpOrDomain(input) === 'Domain'){
+    setErrorText("Please provide an IP address.");
+    return;
   }
+    await getUserData(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${input}`);
+  {console.log("errorText: ", errorText)}
+
 }
 
 const UtcVal = () => {
   const sign = Math.sign(response.time_zone.offset);
-
+  {console.log(response)}
   if(sign === 0){
     return 'UTC'+response.time_zone.offset+':00';
   }else if(sign === -1){
@@ -93,10 +105,10 @@ if(response === undefined){
      <div className='app-container'>
        <div className='hero-image-container'>
          <div className='search-container'>
-           <p>IP Address Tracker</p>
+           <p className='main-header'>IP Address Tracker</p>
            <div className="search-field">
              <form onSubmit={handleSubmit}>
-               <input type='text' required className='input' onChange={(e)=> handleInputChange(e)} placeholder='Search for any IP address or domain'></input>
+               <input type='text' required className='input' onChange={handleInputChange} placeholder='Search for any IP address'></input>
                <span type="submit"  className='input' onClick={handleSubmit}>
                  {
                    loading?
@@ -104,6 +116,8 @@ if(response === undefined){
                    :<svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" strokeWidth="3" d="M2 1l6 6-6 6"/></svg>
                  }
                  </span>
+             <p className='error-text'>{errorText? errorText: ""} </p>
+             <p className='success-text'>{successText? successText: ""} </p>
              </form>
            </div>
            <div className='text-result'>
@@ -122,7 +136,7 @@ if(response === undefined){
              </div>
              <div>
                <span  className='header'>ISP</span >
-               <span className='data'>{response.isp}</span > {console.log("ErrorText: ", errorText)}
+               <span className='data'>{response.isp}</span >
              </div>
            </div>
          </div>

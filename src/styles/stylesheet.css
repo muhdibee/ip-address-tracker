@@ -36,7 +36,7 @@ body {
   max-width: 100%;
   min-width: 50%;
 }
-.app-container .hero-image-container .search-container p {
+.app-container .hero-image-container .search-container .main-header {
   margin-top: 2rem;
   color: #ffffff;
   font-weight: 500;
@@ -44,6 +44,16 @@ body {
 }
 .app-container .hero-image-container .search-container .search-field {
   margin-top: 1rem;
+}
+.app-container .hero-image-container .search-container .search-field .error-text {
+  color: gold;
+  font-size: 17px;
+  text-align: center;
+}
+.app-container .hero-image-container .search-container .search-field .success-text {
+  color: rgb(127, 235, 55);
+  font-size: 17px;
+  text-align: center;
 }
 .app-container .hero-image-container .search-container .search-field form .input {
   border: 0px;
