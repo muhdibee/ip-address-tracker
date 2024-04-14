@@ -102,13 +102,13 @@ if(response === undefined){
          </div>
        </div>
        <MapContainer
-         center={[9.0563, 7.4985]}
+         center={[parseFloat(response.latitude), parseFloat(response.longitude)]}
          zoom={13}>
          <TileLayer
            attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-         <Marker position={[9.0563, 7.4985]} icon={customIcon}></Marker>
+         <Marker position={[parseFloat(response.latitude), parseFloat(response.longitude)]} icon={customIcon}></Marker>
        </MapContainer>
        
        <div className="attribution">
