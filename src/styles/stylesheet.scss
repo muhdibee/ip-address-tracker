@@ -17,6 +17,15 @@ $black: #000000;
     font-family: "Rubik", sans-serif;
   }
   
+// Loader container
+.loader-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 
 //App container
 .app-container {
@@ -76,7 +85,7 @@ $black: #000000;
         .text-result {
             display: flex;
             align-items:center;
-            justify-content: space-between;
+            justify-content: space-around;
             padding: 1rem;
             position: relative;
             width: 65rem;
