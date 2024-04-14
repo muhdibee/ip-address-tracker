@@ -22,10 +22,9 @@ function App() {
 
   const userUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
 
-  const getUserData = async() => {
+  const getUserData = async(url) => {
     try {
-      const response = await axios.get( userUrl);
-      console.log("API response:", response.data);
+      const response = await axios.get( url);
       setResponse(response.data)
     }catch(err){
       if(err.response){
@@ -35,24 +34,55 @@ function App() {
   }
 
   useEffect(()=> {
-    getUserData();
+    getUserData(userUrl);
   },[]);
-  const handleRequest = (e)=> {
-  e.preventDefault(); 
-  axios.get( userUrl)
+
+  const handleInputChange = (e) =>{
+    setInput(e.target.value);
+  }
+
+  function isIpOrDomain(text) {
+    // Regular expression for validating an IPv4 address
+    const ipRegex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
+
+    // Regular expression for validating a domain name
+    const domainRegex = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$/;
+    // Check if the input matches the IP address regular expression
+    if (ipRegex.test(text)) {
+        return 'IP';
+    }
+    // Check if the text matches the domain name regular expression
+    if (domainRegex.test(text)) {
+        return 'Domain';
+    }
+    // If neither regular expression matches, return null
+    return null;
+}
+
+
+  const handleSubmit = (e)=> {
+  e.preventDefault()
+  const requestType = isIpOrDomain(input);
+  {console.log(input)}
+  if(requestType === 'IP'){
+    getUserData(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${input}`)
+  }else if(requestType === 'Domain'){
+    setErrorText("Please search using an IP address.")
+  }
 }
 
 const UtcVal = () => {
   const sign = Math.sign(response.time_zone.offset);
 
   if(sign === 0){
-    return 'UTC0'+response.time_zone.offset+':00';
+    return 'UTC'+response.time_zone.offset+':00';
   }else if(sign === -1){
-    return 'UTC-0'+response.time_zone.offset+':00';
+    return 'UTC'+response.time_zone.offset+':00';
   }else {
-    return 'UTC+0'+response.time_zone.offset+':00';
+    return 'UTC'+response.time_zone.offset+':00';
   }
 }
+
 if(response === undefined){
   return(
     <div className="loader-container">
@@ -65,9 +95,9 @@ if(response === undefined){
          <div className='search-container'>
            <p>IP Address Tracker</p>
            <div className="search-field">
-             <form>
-               <input type='text' className='input' placeholder='Search for any IP address or domain'></input>
-               <span type="submit"  className='input'>
+             <form onSubmit={handleSubmit}>
+               <input type='text' required className='input' onChange={(e)=> handleInputChange(e)} placeholder='Search for any IP address or domain'></input>
+               <span type="submit"  className='input' onClick={handleSubmit}>
                  {
                    loading?
                    <VscLoading className='loading'/>
@@ -92,14 +122,14 @@ if(response === undefined){
              </div>
              <div>
                <span  className='header'>ISP</span >
-               <span className='data'>{response.isp}</span >
+               <span className='data'>{response.isp}</span > {console.log("ErrorText: ", errorText)}
              </div>
            </div>
          </div>
        </div>
        <MapContainer
          center={[parseFloat(response.latitude), parseFloat(response.longitude)]}
-         zoom={12}>
+         zoom={2}>
          <TileLayer
            attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
