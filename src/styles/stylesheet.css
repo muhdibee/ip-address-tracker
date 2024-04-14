@@ -51,9 +51,13 @@ body {
   text-align: center;
 }
 .app-container .hero-image-container .search-container .search-field .success-text {
-  color: rgb(127, 235, 55);
+  color: rgb(109, 238, 22);
   font-size: 17px;
   text-align: center;
+}
+.app-container .hero-image-container .search-container .search-field .loading {
+  font-size: 18px;
+  color: #ffffff;
 }
 .app-container .hero-image-container .search-container .search-field form .input {
   border: 0px;

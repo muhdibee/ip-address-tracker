@@ -13,7 +13,7 @@ $dark-gray: hsl(0, 0%, 59%);
 $white: #ffffff;
 $black: #000000;
 $error-color: gold;
-$success-color: rgb(127, 235, 55);
+$success-color: rgb(109, 238, 22);
 
   body {
     font-family: "Rubik", sans-serif;
@@ -69,6 +69,10 @@ $success-color: rgb(127, 235, 55);
                 color: $success-color;
                 font-size: 17px;
                 text-align: center;
+            }
+            .loading {
+                font-size: 18px;
+                color: $white;
             }
         }
         .search-container .search-field form .input{

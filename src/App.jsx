@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { VscLoading } from "react-icons/vsc";
-import 'leaflet/dist/leaflet.css'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";import 'leaflet/dist/leaflet.css'
 import {MapContainer,TileLayer, Marker, Popup} from 'react-leaflet'
 import L, {Icon} from 'leaflet'
 import iconLocation from './assets/images/iconLocation.svg'
@@ -24,9 +23,11 @@ function App() {
   const userUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
 
   const getUserData = async(url) => {
+    setLoading(true);
     try {
       const response = await axios.get(url);
       setSuccessText("Success.");
+      setLoading(false);
       setTimeout(()=>{
         setSuccessText("");
       },3000);
@@ -34,6 +35,7 @@ function App() {
       setResponse(response.data)
     }catch(err){
       if(err.response){
+        setLoading(false);
         setErrorText("Bad request");
         setTimeout(()=>{
           setErrorText("");
@@ -98,7 +100,7 @@ const UtcVal = () => {
 if(response === undefined){
   return(
     <div className="loader-container">
-      <VscLoading style={{color: 'black', fontSize: '10rem'}}/>
+      <AiOutlineLoading3Quarters style={{color: 'black', fontSize: '10rem'}}/>
     </div>
   )}else {
     return (
@@ -112,7 +114,7 @@ if(response === undefined){
                <span type="submit"  className='input' onClick={handleSubmit}>
                  {
                    loading?
-                   <VscLoading className='loading'/>
+                   <AiOutlineLoading3Quarters className='loading'/>
                    :<svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" strokeWidth="3" d="M2 1l6 6-6 6"/></svg>
                  }
                  </span>
