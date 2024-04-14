@@ -79,23 +79,19 @@ if(response === undefined){
            <div className='text-result'>
              <div className='first'>
                <span  className='header'>IP ADDRESS</span >
-               {/* <span  className='data' >192.212.24.101</span > */}
                <span  className='data' >{response.ip}</span >
              </div>
              <div>
                <span  className='header'>LOCATION</span >
-               {/* <span  className='data'>Brooklyn, NY 10001 </span > */}
                <span  className='data'>{response.city}</span >
  
              </div>
              <div>
                <span  className='header'>TIMEZONE</span >
-               {/* <span  className='data'>UTC-05:00</span > */}
                <span  className='data'>{UtcVal? <UtcVal />: 'UTC+02:00'}</span >
              </div>
              <div>
                <span  className='header'>ISP</span >
-               {/* <span className='data'>SpaceX StarLink</span > */}
                <span className='data'>{response.isp}</span >
              </div>
            </div>
@@ -103,7 +99,7 @@ if(response === undefined){
        </div>
        <MapContainer
          center={[parseFloat(response.latitude), parseFloat(response.longitude)]}
-         zoom={13}>
+         zoom={12}>
          <TileLayer
            attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
