@@ -9,6 +9,7 @@ function App() {
     iconUrl: iconLocation,
     iconSize: [30,38]
   })
+  console.log("Key: ", import.meta.env.VITE_IPIFY_API_KEY)
   return (
     <div className='app-container'>
       <div className='hero-image-container'>
