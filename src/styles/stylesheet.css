@@ -58,11 +58,6 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.app-container .hero-image-container .search-container .search-field form .input[type=submit] .loading {
-  font-weight: bold;
-  margin: 0px auto;
-  cursor: progress;
-}
 .app-container .hero-image-container .text-result {
   display: flex;
   align-items: center;
