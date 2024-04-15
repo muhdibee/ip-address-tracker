@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { AiOutlineLoading3Quarters } from "react-icons/ai";import 'leaflet/dist/leaflet.css'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import 'leaflet/dist/leaflet.css'
 import {MapContainer,TileLayer, Marker, Popup} from 'react-leaflet'
 import L, {Icon} from 'leaflet'
 import iconLocation from './assets/images/iconLocation.svg'
@@ -36,7 +37,13 @@ function App() {
     }catch(err){
       if(err.response){
         setLoading(false);
-        setErrorText("Bad request");
+        setErrorText("Bad request.");
+        setTimeout(()=>{
+          setErrorText("");
+        },3000);    
+      }else if(err.request){
+        setLoading(false);
+        setErrorText("Something went wrong.");
         setTimeout(()=>{
           setErrorText("");
         },3000);    
