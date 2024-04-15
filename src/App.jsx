@@ -100,7 +100,7 @@ const UtcVal = () => {
 if(response === undefined){
   return(
     <div className="loader-container">
-      <AiOutlineLoading3Quarters style={{color: 'black', fontSize: '10rem'}}/>
+      <AiOutlineLoading3Quarters className='load-icon'/>
     </div>
   )}else {
     return (
@@ -114,7 +114,7 @@ if(response === undefined){
                <span type="submit"  className='input' onClick={handleSubmit}>
                  {
                    loading?
-                   <AiOutlineLoading3Quarters className='loading'/>
+                   <AiOutlineLoading3Quarters className='loading load-icon'/>
                    :<svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" strokeWidth="3" d="M2 1l6 6-6 6"/></svg>
                  }
                  </span>

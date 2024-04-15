@@ -18,7 +18,21 @@ $success-color: rgb(109, 238, 22);
   body {
     font-family: "Rubik", sans-serif;
   }
-  
+//   load icon
+@keyframes loader {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+
+}
+.load-icon {
+    animation: loader 1.25s infinite;
+
+}
+
 // Loader container
 .loader-container {
     width: 100%;
@@ -26,6 +40,8 @@ $success-color: rgb(109, 238, 22);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 10rem;
+    color: $black;
 
 }
 

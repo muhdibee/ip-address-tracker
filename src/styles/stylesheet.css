@@ -9,12 +9,26 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
+@keyframes loader {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+.load-icon {
+  animation: loader 1.25s infinite;
+}
+
 .loader-container {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 10rem;
+  color: #000000;
 }
 
 .app-container {
