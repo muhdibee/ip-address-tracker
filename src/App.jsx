@@ -9,13 +9,13 @@ import iconLocation from './assets/images/iconLocation.svg'
 function App() {
 
   const [loading, setLoading] = useState(false);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(undefined);
   const [errorText, setErrorText] = useState('');
   const [successText, setSuccessText] = useState("")
   const [response, setResponse] = useState(undefined);
 
-  // const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
-  const apiKey = "import.meta.env.VITE_IPGEOLOCATION_API_KEY";
+  const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
+  // const apiKey = "import.meta.env.VITE_IPGEOLOCATION_API_KEY";
 
   const userUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
   
@@ -105,12 +105,12 @@ const UtcVal = () => {
 }
 
 // Render to user.
-// if(response === undefined){
-//   return(
-//     <div className="loader-container">
-//       <AiOutlineLoading3Quarters className='load-icon'/>
-//     </div>
-//   )}else {
+if(response === undefined){
+  return(
+    <div className="loader-container">
+      <AiOutlineLoading3Quarters className='load-icon'/>
+    </div>
+  )}else {
     return (
      <div className='app-container'>
        <div className='hero-image-container'>
@@ -137,7 +137,7 @@ const UtcVal = () => {
              </div>
              <div>
                <span  className='header'>LOCATION</span >
-               <span  className='data'>{response? response.city : 'Brooklyn, NY 10001'}</span >
+               <span  className='data'>{response? response.city : 'Brooklyn, NY 10001'}, {response? response.country_code2 : 'Brooklyn, NY 10001'}</span >
  
              </div>
              <div>
@@ -153,7 +153,7 @@ const UtcVal = () => {
        </div>
        <MapContainer
          center={[parseFloat(response?response.latitude: "9.05627"), parseFloat(response? response.longitude : "7.49853")]}
-         zoom={2}>
+         zoom={1}>
          <TileLayer
            attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -167,6 +167,6 @@ const UtcVal = () => {
      </div>
    )
   }
-// }
+}
 
 export default App

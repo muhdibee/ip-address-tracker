@@ -17,7 +17,8 @@ $success-color: rgb(109, 238, 22);
 
   body {
     font-family: "Rubik", sans-serif;
-  }
+    background-image: url(../assets/images/pattern-bg-desktop.png);
+}
 //   load icon
 @keyframes loader {
     0% {
