@@ -159,7 +159,7 @@ $success-color: rgb(109, 238, 22);
         width: 100%;
         font-size: 14px;
         text-align: center;
-        z-index: 401;
+        z-index: 1000;
         background-color: $white;
         a { 
             color: hsl(228, 45%, 44%);
@@ -179,6 +179,10 @@ $success-color: rgb(109, 238, 22);
 @media screen and (max-width: 650px){
   .app-container {
     .hero-image-container {
+        height: 30vh;
+        background-image: url(../assets/images/pattern-bg-mobile.png);
+        background-size: cover;
+
         .text-result {
             flex-direction: column;
             width: 90%;
@@ -209,6 +213,11 @@ $success-color: rgb(109, 238, 22);
             text-align: center;
         }
     }
+    // This style has to here, it is used to style the MapContainer component.
+.leaflet-container {
+    height:90vh;
+    padding-bottom: 1.5rem;
+}
   }
 }
 
