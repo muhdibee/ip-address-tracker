@@ -64,7 +64,8 @@ $success-color: rgb(109, 238, 22);
             align-items: center;
             justify-content: center;
             max-width: 100%;
-            min-width: 50%;
+            min-width: 90%;
+            // border: 1px solid black;
         }
         .search-container .main-header{
             margin-top: 2rem;
@@ -74,6 +75,9 @@ $success-color: rgb(109, 238, 22);
         }
         .search-container .search-field {
             margin-top: 1rem;
+            // border: 1px solid black;
+            max-width: 90%;
+            min-width: 60%  ;
             .error-text{
                 color: $error-color;
                 font-size: 17px;
@@ -100,7 +104,8 @@ $success-color: rgb(109, 238, 22);
         .search-container .search-field form .input[type='text']{
             border-top-left-radius: .8rem;
             border-bottom-left-radius: .8rem;
-            width: 30rem;
+            width: 85%;
+            // width: 90%;
             text-align: center;
         }
         .search-container .search-field form .input[type='submit']{
@@ -118,7 +123,9 @@ $success-color: rgb(109, 238, 22);
             justify-content: space-around;
             padding: 1rem;
             position: relative;
-            width: 65rem;
+            // width: 65rem;
+            // max-width: 90%;
+            min-width: 90%;
             height: 9rem;
             background-color: $white;
             z-index: 401;
@@ -169,14 +176,14 @@ $success-color: rgb(109, 238, 22);
 }
 
 /* Small screens */
-@media screen and (max-width: 600px){
+@media screen and (max-width: 650px){
   .app-container {
     .hero-image-container {
         .text-result {
             flex-direction: column;
             width: 90%;
             height: auto;
-            bottom: 0rem;
+            bottom: -0.8rem;
             padding: 1.3rem 1rem;
             div {
                 border-left: 0px;
@@ -192,9 +199,14 @@ $success-color: rgb(109, 238, 22);
                 text-align: center;
                 margin-bottom: 0.2rem;
             }
-
-
-
+        }
+        .search-container .search-field {
+            width: 100%;
+            // border: 1px solid black;
+        }
+        .search-container .search-field form .input[type='text']{
+            width: 85%;
+            text-align: center;
         }
     }
   }
