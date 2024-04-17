@@ -14,7 +14,8 @@ function App() {
   const [successText, setSuccessText] = useState("")
   const [response, setResponse] = useState(undefined);
 
-  const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
+  // const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
+  const apiKey = "import.meta.env.VITE_IPGEOLOCATION_API_KEY";
 
   const userUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
   
@@ -104,12 +105,12 @@ const UtcVal = () => {
 }
 
 // Render to user.
-if(response === undefined){
-  return(
-    <div className="loader-container">
-      <AiOutlineLoading3Quarters className='load-icon'/>
-    </div>
-  )}else {
+// if(response === undefined){
+//   return(
+//     <div className="loader-container">
+//       <AiOutlineLoading3Quarters className='load-icon'/>
+//     </div>
+//   )}else {
     return (
      <div className='app-container'>
        <div className='hero-image-container'>
@@ -132,11 +133,11 @@ if(response === undefined){
            <div className='text-result'>
              <div className='first'>
                <span  className='header'>IP ADDRESS</span >
-               <span  className='data' >{response.ip}</span >
+               <span  className='data' >{response? response.ip : "192.212.174.101"}</span >
              </div>
              <div>
                <span  className='header'>LOCATION</span >
-               <span  className='data'>{response.city}</span >
+               <span  className='data'>{response? response.city : 'Brooklyn, NY 10001'}</span >
  
              </div>
              <div>
@@ -145,19 +146,19 @@ if(response === undefined){
              </div>
              <div>
                <span  className='header'>ISP</span >
-               <span className='data'>{response.isp}</span >
+               <span className='data'>{response? response.isp : "SpaceX Starlink"}</span >
              </div>
            </div>
          </div>
        </div>
        <MapContainer
-         center={[parseFloat(response.latitude), parseFloat(response.longitude)]}
+         center={[parseFloat(response?response.latitude: "9.05627"), parseFloat(response? response.longitude : "7.49853")]}
          zoom={2}>
          <TileLayer
            attribution='&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
          />
-         <Marker position={[parseFloat(response.latitude), parseFloat(response.longitude)]} icon={customIcon}></Marker>
+         <Marker position={[parseFloat(response?response.latitude: "9.05627"), parseFloat(response? response.longitude : "7.49853")]} icon={customIcon}></Marker>
        </MapContainer>
        
        <div className="attribution">
@@ -166,6 +167,6 @@ if(response === undefined){
      </div>
    )
   }
-}
+// }
 
 export default App

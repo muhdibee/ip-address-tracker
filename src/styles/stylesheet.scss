@@ -111,7 +111,6 @@ $success-color: rgb(109, 238, 22);
             font-weight: bold;
             cursor:pointer;
         }
-        
         // Result-container
         .text-result {
             display: flex;
@@ -120,12 +119,11 @@ $success-color: rgb(109, 238, 22);
             padding: 1rem;
             position: relative;
             width: 65rem;
-            height: 10rem;
+            height: 9rem;
             background-color: $white;
             z-index: 401;
             bottom: -2.8rem;
             border-radius: .8rem;
-
             div {
                 border-left: 1px solid $dark-gray;
                 font-weight: 500;
@@ -134,8 +132,6 @@ $success-color: rgb(109, 238, 22);
             div[class='first']{
                 border-left: none;
             }
-
-
             .header {
                 display: block;
                 color: $dark-gray;
@@ -162,8 +158,8 @@ $success-color: rgb(109, 238, 22);
             color: hsl(228, 45%, 44%);
         }
     }
-
 }
+// This style has to here, it is used to style the MapContainer component.
 .leaflet-container {
     height:75vh;
     // width: 99vw;
@@ -171,4 +167,37 @@ $success-color: rgb(109, 238, 22);
     padding: 0px;
 
 }
+
+/* Small screens */
+@media screen and (max-width: 600px){
+  .app-container {
+    .hero-image-container {
+        .text-result {
+            flex-direction: column;
+            width: 90%;
+            height: auto;
+            bottom: 0rem;
+            padding: 1.3rem 1rem;
+            div {
+                border-left: 0px;
+                margin-top: 1.2rem;
+                font-weight: 500;
+                padding-left: 1rem;
+                // border: 1px solid #000000;
+            }
+            div[class='first']{
+                margin-top: 0px;
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 0.2rem;
+            }
+
+
+
+        }
+    }
+  }
+}
+
 
