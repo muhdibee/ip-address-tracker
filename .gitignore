@@ -41,3 +41,6 @@ dist-ssr
 
 # env variables
 .env
+
+# Unnecessary files
+WhatILearnt.txt

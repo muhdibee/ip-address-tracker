@@ -16,13 +16,9 @@ function App() {
 
   const apiKey = import.meta.env.VITE_IPGEOLOCATION_API_KEY;
 
-  const customIcon = new Icon({
-    iconUrl: iconLocation,
-    iconSize: [30,38]
-  })
-
   const userUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`
-
+  
+  // Fetch ip data.
   const getUserData = async(url) => {
     setLoading(true);
     try {
@@ -32,7 +28,7 @@ function App() {
       setTimeout(()=>{
         setSuccessText("");
       },3000);
-  
+      
       setResponse(response.data)
     }catch(err){
       if(err.response){
@@ -50,47 +46,50 @@ function App() {
       }
     }
   }
-
+  
+  // FEtch client data on page load.
   useEffect(()=> {
     getUserData(userUrl);
   },[]);
-
+  
   const handleInputChange = (e) =>{
     setInput(e.target.value);
   }
-
+  
   function isIpOrDomain(text) {
     // Regular expression for validating an IPv4 address
     const ipRegex = /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)){3}$/;
-
+    
     // Regular expression for validating a domain name
     const domainRegex = /^(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.[A-Za-z]{2,})+$/;
-
+    
     // Check if the text matches the IP address regular expression
     if (ipRegex.test(text)) {
-        return 'IP';
+      return 'IP';
     }
-
+    
     // Check if the text matches the domain name regular expression
     if (domainRegex.test(input)) {
-        return 'Domain';
+      return 'Domain';
     }
 
     // If neither regular expression matches, return null
     return null;
 }
 
-  
-  const handleSubmit = async(e)=> {
+const handleSubmit = async(e)=> {
   e.preventDefault();
   if(isIpOrDomain(input) === 'Domain'){
     setErrorText("Please provide an IP address.");
     return;
   }
-    await getUserData(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${input}`);
-  {console.log("errorText: ", errorText)}
-
+  await getUserData(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${input}`);  
 }
+
+const customIcon = new Icon({
+  iconUrl: iconLocation,
+  iconSize: [30,38]
+})
 
 const UtcVal = () => {
   const sign = Math.sign(response.time_zone.offset);
@@ -104,6 +103,7 @@ const UtcVal = () => {
   }
 }
 
+// Render to user.
 if(response === undefined){
   return(
     <div className="loader-container">

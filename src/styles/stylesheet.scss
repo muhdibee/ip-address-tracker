@@ -42,7 +42,7 @@ $success-color: rgb(109, 238, 22);
     justify-content: center;
     font-size: 10rem;
     color: $black;
-
+    background-color: cyan;
 }
 
 //App container
@@ -56,7 +56,6 @@ $success-color: rgb(109, 238, 22);
         align-items: start;
         justify-content: center;
         height: 38vh;
-        // width: 99vw;
         background-image: url(../assets/images/pattern-bg-desktop.png);
 
         .search-container {
@@ -66,7 +65,6 @@ $success-color: rgb(109, 238, 22);
             justify-content: center;
             max-width: 100%;
             min-width: 50%;
-
         }
         .search-container .main-header{
             margin-top: 2rem;
